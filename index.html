@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
 
   const isTarget =
-    params.get("sm") === "OFFLINE_EVENT_260705" &&
+    params.get("sm") === "TEST_BBPS" &&
     params.get("utm_campaign") === "ETC" &&
     params.get("utm_source") === "ETC" &&
     params.get("utm_medium") === "CPM" &&
-    params.get("utm_content") === "OFFLINE_EVENT_260705" &&
-    params.get("utm_term") === "OFFLINE_EVENT_260705";
+    params.get("utm_content") === "TEST_BBPS" &&
+    params.get("utm_term") === "TEST_BBPS";
 
   if (isTarget) {
     document.getElementById("offlineEventImage").style.display = "block";
