@@ -1,11 +1,224 @@
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('img').forEach(img => {
-    const baseUrl = img.src.split('?')[0];  // 기존 ? 제거
-    img.src = `${baseUrl}?v=${Date.now()}`; // 타임스탬프 붙여서 캐시 무효화
-  });
-});
-</script>
+
+<!-- saved from url=(0043)https://alkamedievent.shop/alkamedi/11/?sm= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<script type="text/javascript" async="" src="./알카메디_files/identify_b8133453.js.다운로드"></script><script type="text/javascript" async="" src="./알카메디_files/main.MTIwMGUyODI1MQ.js.다운로드" data-id="D36FI13C77U0JLJ5F96G"></script><script src="./알카메디_files/1226257422961299" async=""></script><script async="" src="./알카메디_files/fbevents.js.다운로드"></script><script type="text/javascript" async="" src="./알카메디_files/events.js.다운로드"></script><script type="text/javascript" async="" src="./알카메디_files/js"></script><script async="" defer="" src="./알카메디_files/enp_tracker_self_hosted.min.js.다운로드"></script><script src="./알카메디_files/dablena-X2RCS47C.js.다운로드" async=""></script><script async="" src="./알카메디_files/gtm.js.다운로드"></script><script async="" charset="utf-8" src="./알카메디_files/dablena.min.js.다운로드"></script><script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	</script>
+
+
+	
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>알카메디</title>
+	<link href="./알카메디_files/style.css" rel="stylesheet">
+	<link href="./알카메디_files/bootstrap.css" rel="stylesheet">
+	<link href="./알카메디_files/style(1).css" rel="stylesheet">
+	<script type="text/javascript" src="./알카메디_files/jquery-3.3.1.min.js.다운로드"></script>
+	<script type="text/javascript" src="./알카메디_files/bootstrap.js.다운로드"></script>
+	<script type="text/javascript" src="./알카메디_files/common.js.다운로드"></script>
+	<script type="text/javascript" src="./알카메디_files/getip.asp.다운로드"></script>
+	<!-- ShowGet ALLScript Start 250805추가-->
+	<script src="./알카메디_files/showgetALL.php" async=""></script>
+	<!-- ShowGet ALLScript End -->
+	<script>
+		var bSend_ing = false;
+		$.urlParam = function(name){
+			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+			if (results==null){return null;}else{return results[1] || 0;}
+		}
+		function db_form(num) {
+			if (!ip_ck(num)) {
+				return;
+			}
+			if (!check_form1(num)) {
+				return;
+			}
+
+			if (bSend_ing) {
+                alert("이미 신청하셨습니다.");
+                return;
+            }
+			if ( $("#age"+num).length > 0 ) {
+				if($("#age"+num).val().replace(/ /g, "") == ""){
+					alert("나이를 입력해주세요.");
+					$("#age"+num).focus();
+					return false;
+				}
+			}
+			if ( $("#tel"+num+"-1").length > 0 ) {
+				if($("#tel"+num+"-2").val().replace(/ /g, "") == ""){
+					alert("휴대폰번호를 입력해주세요.");
+					$("#tel"+num+"-2").focus();
+					return false;
+				}
+				if($("#tel"+num+"-3").val().replace(/ /g, "") == ""){
+					alert("휴대폰번호를 입력해주세요.");
+					$("#tel"+num+"-3").focus();
+					return false;
+				}
+				if($("#tel"+num+"-2").val().length < 4) {
+					alert("전화번호을 4자리로 입력해주세요.");
+					$("#tel"+num+"-2").focus();
+					return false;
+				}
+				if($("#tel"+num+"-3").val().length < 4) {
+					alert("전화번호을 4자리로 입력해주세요.");
+					$("#tel"+num+"-3").focus();
+					return false;
+				}
+
+				//if (middle_chk) {
+				if($("#tel"+num+"-2").val().substr(0,1)=="0"||$("#tel"+num+"-2").val().substr(0,1)=="1") {
+					alert("유효하지 않은 번호입니다.");
+					$("#tel"+num+"-2").focus();
+					return false;
+				}
+				//}
+
+			}
+
+
+			
+
+			//if($("input[name=radio1]:checked").length==0){
+				//alert("성별을 선택해주세요");
+				//return;
+			//}
+
+			var sm="";
+			if($.urlParam("sm") != null){
+				sm=$.urlParam("sm");
+			}else{
+				sm="유입코드X";
+			}
+
+			var check1 = "";
+			var inChkedCnt = $('input:checkbox[name=checkbox1]:checked').length;
+			$('input:checkbox[name=checkbox1]:checked').each(function(i) {
+				if (i == 0) {
+					check1 += $(this).val();
+				} else {
+					check1 = check1 + ',' + $(this).val();
+				}
+			});
+
+			$("#datakind").val("alkamedi");
+			$("#ad_key").val("11"); //folder_name
+			$("#data30").val("108"); //site_key
+			$("#referrer").val(document.referrer);
+
+			$("#data1").val($("#name"+num).val() );    //이름
+			$("#data2").val($("#tel"+num+"-1").val() + "-" + $("#tel"+num+"-2").val() + "-" + $("#tel"+num+"-3").val() );  //전화번호
+			$("#data3").val($('input:radio[name="radio1"]:checked').val());  //성별
+			$("#data4").val($("#age"+num).val()); //나이
+			$("#data5").val(sm);  //유입코드
+			$("#data6").val(check1);//신청이유
+			$("#data7").val($("#region").val());//지역
+
+			var l_rndom = new Date().getTime();
+			bSend_ing = true;
+			$.ajax({
+				type: "POST",
+				async: false,
+				cache: false,
+				dataType: "jsonp",
+				data: $("#frm").serialize(),
+				url: "https://api.smartsales.kr/01/" + "?r=" + l_rndom,
+				success: function(sData) {
+					if (sData.result == "true") {
+						
+						//showget
+						function addSGscriptPlugInManually() { window.SGscriptPlugIn = { loadSBox: function(eSRC, fnc) { var u = btoa(encodeURIComponent(location.href)), script = document.createElement('script'); script.type = 'text/javascript'; script.charset = 'utf-8'; script.async = true; script.src = eSRC + '&u=' + u; script.referrerPolicy = 'unsafe-url'; script.onload = script.onreadystatechange = function() { if (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete') { if (fnc) eval(fnc); } }; document.head.appendChild(script); } }; };
+						let sgPluginInitialized=false;
+
+						function showgetLoading(){
+							SGShowID="alkamedi";
+							SGOrderName=($("#name"+num).val());
+							SGTotalPrice=($("#tel"+num+"-1").val() + "-" + $("#tel"+num+"-2").val() + "-" + $("#tel"+num+"-3").val());
+							SGOrderid=SGOrderName+"|dinfo|"+SGTotalPrice;
+							SGscriptPlugIn.loadSBox('//showget.co.kr/js/plugShow.php?'+SGShowID, "sg_paycheck.payment('"+SGOrderid+"','"+SGTotalPrice+"','Y')");
+							eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('0(5);6 0(a){1 b=2 3();1 c=b.4()+a;7(8){b=2 3();9(b.4()>c)d}}',14,14,'sleep|var|new|Date|getTime|1000|function|while|true|if||||return'.split('|'),0,{}));
+						};
+
+						if(typeof SGscriptPlugIn==='undefined') addSGscriptPlugInManually();
+						showgetLoading();
+						//showget
+
+						// Dable 전환 스크립트: 신청 완료 후에만 실행됨
+						(function(d,a,b,l,e,_) {
+							d[b]=d[b]||function(){(d[b].q=d[b].q||[]).push(arguments)};e=a.createElement(l);
+							e.async=1;e.charset='utf-8';e.src='//static.dable.io/dist/dablena.min.js';
+							_=a.getElementsByTagName(l)[0];_.parentNode.insertBefore(e,_);
+						})(window,document,'dablena','script');
+						dablena('init', '001-011-804');
+						dablena('track', 'CompleteRegistration');
+
+						//google
+						dataLayer.push({"event" : "completeLead", "nameLead" : $("#name"+num).val()});
+
+						//naver
+						var _conv = {};
+						_conv.type = "lead";
+						wcs.trans(_conv);
+						
+						setTimeout(() => { 
+							alert("신청이 완료되었습니다.");
+							location.reload(); 
+						}, 1000);
+
+					} else if (sData.result == "dup") {
+						alert("신청이 완료되었습니다.");
+						location.reload();
+						//alert("이미 신청 완료된 연락처입니다");
+						//bSend_ing = false;
+					} else {
+						alert("신청 접수가 실패했습니다!");
+						bSend_ing = false;
+					}
+				},
+				error: function(request, status, error) {
+					console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+				}
+			});
+		}
+	</script>
+	
+
+
+	<!-- Dable 스크립트 시작 250707추가-->
+	<script>
+	(function(d,a,b,l,e,_) {
+	d[b]=d[b]||function(){(d[b].q=d[b].q||[]).push(arguments)};e=a.createElement(l);
+	e.async=1;e.charset='utf-8';e.src='//static.dable.io/dist/dablena.min.js';
+	_=a.getElementsByTagName(l)[0];_.parentNode.insertBefore(e,_);
+	})(window,document,'dablena','script');
+	dablena('init', '001-011-804');
+	dablena('track', 'PageView');
+	</script>
+	<!-- Dable 스크립트 종료 -->
+
+	<!-- ADPNUT SCRIPT -->
+	<script type="text/javascript" async="" src="./알카메디_files/synchronizer.js.다운로드"></script><script type="text/javascript" charset="utf-8" async="" referrerpolicy="unsafe-url" src="./알카메디_files/plugShow.php"></script><script type="text/javascript" charset="utf-8" defer="" referrerpolicy="unsafe-url" src="./알카메디_files/smaker.php"></script><script type="text/javascript" async="" src="./알카메디_files/f.txt"></script><script type="text/javascript" async="" src="./알카메디_files/f(1).txt"></script><script type="text/javascript" charset="utf-8" defer="" referrerpolicy="unsafe-url" src="./알카메디_files/smaker.php"></script></head><body><iframe src="./알카메디_files/view.html" width="0" height="0" frameborder="0"></iframe>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-P8CGQD9D');</script>
+	<!-- End Google Tag Manager -->
+		
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', () => {
+		  document.querySelectorAll('img').forEach(img => {
+			const baseUrl = img.src.split('?')[0];  // 기존 ? 제거
+			img.src = `${baseUrl}?v=${Date.now()}`; // 타임스탬프 붙여서 캐시 무효화
+		  });
+		});
+	</script>		
 
 <div id="offlineEventImage" style="display:none;">
   <img src="https://alkamedi.github.io/img/260702_alkamedi_event_01.jpg" style="width:100%; max-width:100%;" alt="">
@@ -29,6 +242,45 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 
+	<form id="frm" name="frm" method="POST">
+		<input type="hidden" id="datakind" name="datakind" value="">
+		<input type="hidden" id="ad_key" name="ad_key" value="">
+		<input type="hidden" id="referrer" name="referrer" value="">
+		<input type="hidden" id="data1" name="data1" value="">
+		<input type="hidden" id="data2" name="data2" value="">
+		<input type="hidden" id="data3" name="data3" value="">
+		<input type="hidden" id="data4" name="data4" value="">
+		<input type="hidden" id="data5" name="data5" value="">
+		<input type="hidden" id="data6" name="data6" value="">
+		<input type="hidden" id="data7" name="data7" value="">
+		<input type="hidden" id="data8" name="data8" value="">
+		<input type="hidden" id="data9" name="data9" value="">
+		<input type="hidden" id="data10" name="data10" value="">
+		<input type="hidden" id="data11" name="data11" value="">
+		<input type="hidden" id="data12" name="data12" value="">
+		<input type="hidden" id="data13" name="data13" value="">
+		<input type="hidden" id="data14" name="data14" value="">
+		<input type="hidden" id="data15" name="data15" value="">
+		<input type="hidden" id="data16" name="data16" value="">
+		<input type="hidden" id="data17" name="data17" value="">
+		<input type="hidden" id="data18" name="data18" value="">
+		<input type="hidden" id="data19" name="data19" value="">
+		<input type="hidden" id="data20" name="data20" value="">
+		<input type="hidden" id="data21" name="data21" value="">
+		<input type="hidden" id="data22" name="data22" value="">
+		<input type="hidden" id="data23" name="data23" value="">
+		<input type="hidden" id="data24" name="data24" value="">
+		<input type="hidden" id="data25" name="data25" value="">
+		<input type="hidden" id="data26" name="data26" value="">
+		<input type="hidden" id="data27" name="data27" value="">
+		<input type="hidden" id="data28" name="data28" value="">
+		<input type="hidden" id="data29" name="data29" value="">
+		<input type="hidden" id="data30" name="data30" value="">
+	</form>
+	<div class="wrap">
+		<!-- <div class="right_banner" onclick="go_link();"> -->
+			<!-- <img src="/alkamedi/img/right_banner.gif?ver=2403121754" alt=""> -->
+		<!-- </div> -->
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_01_01.jpg">
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_01_02.gif">
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_01_03.jpg">
@@ -39,3 +291,264 @@ document.addEventListener('DOMContentLoaded', () => {
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_06.jpg">
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_07.jpg">
 <img src="https://alkamedi.github.io/img/260507_alkamedi_landing_main_model_08.jpg">
+
+		<div class="db_wrap">
+			<div class="db_input">
+				<div class="table0">
+					<div class="cell">
+						<strong>이름</strong>
+					</div>
+					<div class="cell">
+						<div class="input_text_wrap">
+							<label>
+								<input type="text" id="name1" name="name1" maxlength="5" placeholder="이름을 입력하세요" required="required" onkeyup="onlyKorean(this);">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="db_input db_input3 clear">
+				<div class="table0">
+					<div class="cell">
+						<strong>나이</strong>
+					</div>
+					<div class="cell">
+						<div class="input_text_wrap">
+							<label>
+								<input type="text" id="age1" name="age1" maxlength="3" placeholder="나이를 입력하세요" required="required" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="db_input">
+				<div class="table0">
+					<div class="cell">
+						<strong>연락처</strong>
+					</div>
+					<div class="cell tel_wrap">
+						<div class="input_select_wrap">
+							<!-- <label> -->
+								<!-- <input type="tel" name="tel1" id="tel1" class="tel_check" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="13"> -->
+							<!-- </label> -->
+							<select name="tel1-1" id="tel1-1">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>
+						</div>
+						<div class="input_text_wrap">
+							<label>
+								<input type="tel" name="tel1-2" id="tel1-2" required="" class="text required tel2" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4">
+							</label>
+						</div>
+						<div class="input_text_wrap">
+							<label>
+								<input type="tel" name="tel1-3" id="tel1-3" required="" class="text required tel3" onkeydown="return onlyNumber(event)" onkeyup="removeChar(event)" maxlength="4">
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="db_input">
+				<div class="table0">
+					<div class="cell">
+						<div class="cell">
+							<strong>성별</strong>
+						</div>
+						<div class="cell">
+							<div class="radiobox_wrap">
+								<label class="radiobox">
+									<input type="radio" id="gender1-1" name="radio1" required="required" value="남자">
+									<span class="radio_mark"></span>
+									<div class="radiobox_text">남성</div>
+								</label>
+							</div>
+							<div class="radiobox_wrap">
+								<label class="radiobox">
+									<input type="radio" id="gender1-2" name="radio1" required="required" value="여자">
+									<span class="radio_mark"></span>
+									<div class="radiobox_text">여성</div>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="db_input db_input3 clear"> -->
+				<!-- <div class="table0"> -->
+					<!-- <div class="cell"> -->
+						<!-- <strong>지역</strong> -->
+					<!-- </div> -->
+					<!-- <div class="cell"> -->
+						<!-- <div class="input_text_wrap"> -->
+							<!-- <label> -->
+								<!-- <input type="text" id="region" name="region" maxlength="30" placeholder="시/구or동 까지만 입력해주세요" required="required"> -->
+							<!-- </label> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<div class="db_input db_input2 db_input3 clear">
+				<div class="table0">
+					<div class="cell">
+						<strong>관심</strong>
+					</div>
+					<div class="cell check_box">
+						<div style="font-size:17px;">
+							<label class="checkbox">
+								<input type="checkbox" name="checkbox1" id="checkbox1" style="margin-right:4px;" value="물 맛"><span class="check_mark"></span> 물 맛
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="checkbox1" id="checkbox1" style="margin-right:4px;" value="활성산소배출"><span class="check_mark"></span> 활성산소배출
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="checkbox1" id="checkbox1" style="margin-right:4px;" value="가격혜택"><span class="check_mark"></span> 가격혜택
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="checkbox1" id="checkbox1" style="margin-right:4px;" value="필터기능"><span class="check_mark"></span> 필터기능
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" name="checkbox1" id="checkbox1" style="margin-right:4px;" value="소화불량/위산과다/만성설사/위장 내 이상발효"><span class="check_mark"></span> 소화불량/위산과다/만성설사/위장 내 이상발효
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="db_checkbox_wrap text_left">
+				<label class="checkbox">
+					<input type="checkbox" id="agree1-1" checked="">
+					<span class="check_mark"></span>
+					개인정보 수집 및 마케팅 활용동의
+				</label>
+				<div class="db_checkbox_info">
+					<a href="https://alkamedievent.shop/alkamedi/agreeBasic" target="_blank">
+						[자세히보기]
+					</a>
+				</div>
+			</div>
+			<div class="db_btn">
+				<a onclick="db_form(1);">
+					<img src="./알카메디_files/8538137ba66b2.gif">
+					<!-- <img src="/alkamedi/img/01/btn.gif?ver=202606101717"> -->
+				</a>
+			</div>
+		</div>
+		<!-- <div class="foot_img"> -->
+			<!-- <img src="/alkamedi/img/02_re.jpg?ver=202606101717"> -->
+		<!-- </div> -->
+		<div class="foot_wrap">
+			<p>
+				상호명. 알카메디 | 주소. 경기도 안양시 동안구 학의로 268 601호(관양동, 메가밸리)<br>
+				대표이사. 은지훈 | 사업자번호. 120-86-45872<br>
+				TEL. 1588-0205 | E-mail. master@alkamedi.com<br>
+				통신판매업-제2008-경기안양-00480호
+			</p>
+		</div>
+		<div class="arrow_btn" onclick="go_link();">
+			<img src="./알카메디_files/btn22.png">
+		</div>
+		
+		<!-- <div class="blinkPopup"> -->
+			<!-- <a href="javascript:go_link()"> -->
+			<!-- <div class="blinkInner"> -->
+				<!-- <div class="text"> -->
+					<!-- <b>**세 <span class="nameListPop">조</span>**님이 신청</b>완료하였습니다.<br> -->
+					<!-- 서둘러서 신청하고 남은 선착순 혜택 받으세요! -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- </a> -->
+		<!-- </div> -->
+		<style type="text/css">
+		  .blinkPopup {position:fixed; left:10%; top:10px; width:80%; transform:scale(0); opacity:0; transition:all 0s; z-index:1}
+		  .blinkPopup.on { transform:scale(1); opacity:1; transition:all 0.3s;}
+		  .blinkPopup .blinkInner {width:100%; max-width:640px; margin:0 auto; position:relative; background:#00176e; border-radius:10px; padding:12px 0; color:#fff; text-align:center; box-sizing: border-box; font-weight:bold; font-size:14px}
+		  .blinkPopup .blinkInner b {color:#24ff6a;}
+		</style>
+
+		<script type="text/javascript">
+			var nameList = "김,이,박,최,양,권,임,강,이,정".split(",");
+
+			function offBlink(){
+				setTimeout(function(){
+					$(".blinkPopup").removeClass("on");
+				}, 3000);
+			}
+
+			function showBlink(){
+				var iCycle = 0;
+
+				// Show the popup immediately
+				var listIndex = Math.floor(Math.random() * 10);
+				$(".blinkPopup").addClass("on");
+				$(".blinkPopup .nameListPop").html(nameList[listIndex]);
+				offBlink();
+
+				// Continue to show the popup at intervals
+				var tid = setInterval(function(){
+					if(iCycle == 30){
+						clearInterval(tid);
+					} else {
+						listIndex = Math.floor(Math.random() * 10);
+						$(".blinkPopup").addClass("on");
+						$(".blinkPopup .nameListPop").html(nameList[listIndex]);
+						offBlink();
+						iCycle++;
+					}
+				}, 7000);
+			}
+
+			showBlink();
+
+	   </script>
+	</div>
+	<script type="text/javascript">
+		//$(document).on("click",".modal_open",function(){
+			//if ( $(this).is(".modal_open_policy1") ) {
+				//$.ajax({
+					//url: "/common/modal/policy1.php",
+					//type: "GET",
+					//success:function(data){
+						//$(".modal-dialog").addClass("modal-dialog_720");
+						//$(".modal .modal-content").html(data);
+						//$(".modal").modal();
+					//}
+				//});
+			//};
+		//});
+	</script>
+	<!-- Enliple Tracker Start -->
+	<script type="text/javascript">
+	(function(a,g,e,n,t){a.enp=a.enp||function(){(a.enp.q=a.enp.q||[]).push(arguments)};n=g.createElement(e);n.async=!0;n.defer=!0;n.src="https://cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js";t=g.getElementsByTagName(e)[0];t.parentNode.insertBefore(n,t)})(window,document,"script");
+	enp('create', 'common', 'uprich01', { device: 'B' }); // W:웹, M: 모바일, B: 반응형
+	enp('send', 'common', 'uprich01');
+	</script>
+	<!-- Enliple Tracker End -->
+
+	<!--naver analytics Start-->
+	<script type="text/javascript" src="./알카메디_files/wcslog.js.다운로드"></script>
+	<script type="text/javascript">
+	if(!wcs_add) var wcs_add = {};
+	wcs_add["wa"] = "s_5a327304fcad";
+	if (!_nasa) var _nasa={};
+	if(window.wcs){
+		wcs.inflow();
+		wcs_do();
+	}
+	</script>
+	<!--naver analytics End-->
+
+
+
+<script id="" text="" charset="" type="text/javascript" src="./알카메디_files/karrot-pixel.umd.js.다운로드"></script>
+<script type="text/javascript" id="" charset="">!function(d,g,e){d.TiktokAnalyticsObject=e;var a=d[e]=d[e]||[];a.methods="page track identify instances debug on off once ready alias group enableCookie disableCookie holdConsent revokeConsent grantConsent".split(" ");a.setAndDefer=function(b,c){b[c]=function(){b.push([c].concat(Array.prototype.slice.call(arguments,0)))}};for(d=0;d<a.methods.length;d++)a.setAndDefer(a,a.methods[d]);a.instance=function(b){b=a._i[b]||[];for(var c=0;c<a.methods.length;c++)a.setAndDefer(b,a.methods[c]);return b};a.load=
+function(b,c){var f="https://analytics.tiktok.com/i18n/pixel/events.js";a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o||{};a._o[b]=c||{};c=document.createElement("script");c.type="text/javascript";c.async=!0;c.src=f+"?sdkid\x3d"+b+"\x26lib\x3d"+e;b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(c,b)};a.load("D36FI13C77U0JLJ5F96G");a.page()}(window,document,"ttq");</script>
+
+<script type="text/javascript" id="" charset="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1226257422961299");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1226257422961299&amp;ev=PageView&amp;noscript=1"></noscript>
+
+<script type="text/javascript" id="" charset="">window.karrotPixel.init("1754400291388700001");window.karrotPixel.track("ViewPage");</script>
+</body></html>
